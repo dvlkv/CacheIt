@@ -10,7 +10,10 @@ namespace CacheIt.DistributedCache
         public static void AddDistributedCachable(this IServiceCollection services, Action<CachableOptions<DistributedCacheEntryOptions>> optionsConfigurator = null)
         {
             services.AddScoped<ICachableFactory, DistributedCachableFactory>();
-            services.Configure(optionsConfigurator);
+            
+            var options = new CachableOptions<DistributedCacheEntryOptions>();
+            optionsConfigurator?.Invoke(options);
+            services.AddSingleton(options);
         }
     }
 }

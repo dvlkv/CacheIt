@@ -19,17 +19,19 @@ namespace CacheIt.Abstractions
             return _customEntryOptions.ContainsKey(t) ? _customEntryOptions[t] : _defaultEntryOptions;
         }
 
-        public void ConfigureAll(Action<TEntryOptions> configurator)
+        public CachableOptions<TEntryOptions> ConfigureAll(Action<TEntryOptions> configurator)
         {
             configurator(_defaultEntryOptions);
+            return this;
         }
 
-        public void Configure<T>(Action<TEntryOptions> configurator)
+        public CachableOptions<TEntryOptions> Configure<T>(Action<TEntryOptions> configurator)
         {
             var optionsForType = new TEntryOptions();
             configurator(optionsForType);
 
             _customEntryOptions[typeof(T)] = optionsForType;
+            return this;
         }
     }
 }

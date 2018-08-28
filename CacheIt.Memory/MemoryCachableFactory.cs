@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using CacheIt.Abstractions;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 
 namespace CacheIt.Memory
 {
@@ -10,10 +9,10 @@ namespace CacheIt.Memory
         private readonly IMemoryCache _cache;
         private readonly CachableOptions<MemoryCacheEntryOptions> _options;
 
-        public MemoryCachableFactory(IMemoryCache cache, IOptions<CachableOptions<MemoryCacheEntryOptions>> options)
+        public MemoryCachableFactory(IMemoryCache cache, CachableOptions<MemoryCacheEntryOptions> options)
         {
             _cache = cache;
-            _options = options.Value;
+            _options = options;
         }
         
         public T Create<T>(T instance)
