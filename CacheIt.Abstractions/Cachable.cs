@@ -36,9 +36,9 @@ namespace CacheIt.Abstractions
                 {
                     InvocationContext = new InvocationContext<TEntryOptions>(targetMethod, args, targetMethod.ReturnType.GetGenericArguments()[0]);
 
-                    return this.GetType().GetMethod("SetOrGetAsync")
+                    return typeof(Cachable<TEntryOptions, T>).GetMethod("SetOrGetAsync", BindingFlags.NonPublic | BindingFlags.Instance)
                         .MakeGenericMethod(InvocationContext.SerializationType)
-                        .Invoke(Instance, new object[] { entryName, targetMethod, args });
+                        .Invoke(this, new object[] { entryName, targetMethod, args });
                 }
                 else
                 {

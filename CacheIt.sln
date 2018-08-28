@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheIt.DistributedCache", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheIt.Memory", "CacheIt.Memory\CacheIt.Memory.csproj", "{16A78887-C5C5-494D-B1E8-52D35059A6CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheIt.Tests", "CacheIt.Tests\CacheIt.Tests.csproj", "{6AB8D751-737A-442A-BBA6-278D5B827013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{16A78887-C5C5-494D-B1E8-52D35059A6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A78887-C5C5-494D-B1E8-52D35059A6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A78887-C5C5-494D-B1E8-52D35059A6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB8D751-737A-442A-BBA6-278D5B827013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB8D751-737A-442A-BBA6-278D5B827013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB8D751-737A-442A-BBA6-278D5B827013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB8D751-737A-442A-BBA6-278D5B827013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

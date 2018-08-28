@@ -14,11 +14,11 @@ namespace CacheIt
         /// <typeparam name="TService"></typeparam>
         public static void AddCachable<TInterface, TService>(this IServiceCollection services)
             where TService : class, TInterface
-            where TInterface : class
+            where TInterface : class 
         {     
             services.AddScoped<TService>();
-            services.AddScoped<TInterface, TService>(provider =>
-                provider.GetService<ICachableFactory>().Create(provider.GetService<TService>())
+            services.AddScoped(provider =>
+                provider.GetService<ICachableFactory>().Create<TInterface>(provider.GetService<TService>())
             );
         }
     }
