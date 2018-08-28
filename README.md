@@ -33,6 +33,15 @@ or
 services.AddMemoryCachable();
 ```
 
+If you use distributed cache, you need to add entry serializer:
+```c#
+services.AddJsonEntrySerializer();
+```
+or
+```c#
+services.AddMessagePackEntrySerializer();
+```
+#
 Then you should decorate your services to enable caching in them, it's easy:
 Use
 ```c#
