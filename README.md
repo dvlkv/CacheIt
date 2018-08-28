@@ -4,20 +4,60 @@ CacheIt makes caching in your app better - you don't need to write many lines of
 ## Usage
 ### Default caching implementation
 ```c#
-public async Task<string> CachedFunction(string params) {
-    var entry = _cache.Get(params);
-    if (entry == null)
-        entry = await _dataSource.Request(params);
-    _cache.Set(params);
-    
-    return entry;
+public interface IService
+{
+    string CachedFunction();
+    Task<string> AsyncCachedFunction();
+}
+
+public class ServiceImplementation : IService
+{    
+    public string CachedFunction()
+    {
+        var entry = _cache.Get(GetKey());
+        if (entry != null)
+            return entry;
+        
+        var result = "test";
+        _cache.Set(result);
+        
+        return result;
+    }
+
+    public async Task<string> AsyncCachedFunction()
+    {
+        var entry = _cache.Get(GetKey());
+        if (entry != null)
+            return entry;
+        
+        var result = "async test";
+        _cache.Set(result);
+        
+        return result;
+    }
 }
 ```
 ### Caching implementation with CacheIt
 ```c#
-[Cached]
-public async Task<string> CachedFunction(string params) {
-    return await _dataSource.Request(params);
+public interface IService
+{
+    [Cached]
+    string CachedFunction();
+    [Cached]
+    Task<string> AsyncCachedFunction();
+}
+
+public class ServiceImplementation : IService
+{    
+   public string CachedFunction()
+   {
+        return "test";
+   }
+
+   public async Task<string> AsyncCachedFunction()
+   {
+       return "async test";
+   }
 }
 ```
 ## Setup
